@@ -1,3 +1,7 @@
+webpack.config.js
+battleship.test.js
+.babelrc
+
 # Logs
 logs
 *.log
