@@ -1,27 +1,30 @@
-class Ship {
-  constructor(length) {
-    this.length = length;
-    this.hits = 0;
-    this.sunk = false;
+function shipFactory (length) {
+  let hits = 0;
+  let sunk = false;
+  
+  function getLength() {
+    return length;
   }
 
-  getLength() {
-    return this.length;
+  function hit() {
+    if (isSunk()) return;
+    hits++;
+    return hits;
   }
 
-  hit() {
-    if (this.isSunk()) return;
-    this.hits++;
-    return this.hits;
-  }
-
-  isSunk() {
-    if (this.hits === this.length) {
-      this.sunk = true;
+  function isSunk() {
+    if (hits === length) {
+     sunk = true;
     }
-    return this.sunk;
+    return sunk;
+  }
+
+  return {
+    getLength,
+    hit,
+    isSunk
   }
 
 }
 
-export default Ship
+export default shipFactory
