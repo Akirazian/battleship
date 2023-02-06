@@ -12,6 +12,10 @@ function shipFactory (length) {
     return hits;
   }
 
+  function getHits() {
+    return hits;
+  }
+
   function isSunk() {
     if (hits === length) {
      sunk = true;
@@ -21,6 +25,7 @@ function shipFactory (length) {
 
   return {
     getLength,
+    getHits,
     hit,
     isSunk
   }
