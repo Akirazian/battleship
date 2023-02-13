@@ -47,9 +47,17 @@ function gameboard() {
     return false;
   }
 
+  let getBoard = () => {
+    return board;
+  }
+
+  let getBoats = () => {
+    return boats;
+  }
+
   return {
-    board,
-    boats,
+    getBoard,
+    getBoats,
     placeShip,
     receiveAttack,
     allSunk

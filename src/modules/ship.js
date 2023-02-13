@@ -1,4 +1,4 @@
-function shipFactory (length) {
+function shipFactory(length) {
   let hits = 0;
   let sunk = false;
   
