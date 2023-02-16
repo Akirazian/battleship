@@ -2,7 +2,7 @@ import shipFactory from "./ship";
 
 function gameboard() {
   let board = []
-  let boats = [];
+  let ships = [];
   for (let i = 0; i < 10; i++) {
     board.push([]);
     for (let j = 0; j < 10; j++) {
@@ -28,7 +28,7 @@ function gameboard() {
         board[coord[0]][coord[1] + i] = { ship: newShip, hit: false }
       }
     }
-    boats.push(newShip);
+    ships.push(newShip);
   }
 
   let receiveAttack = (x, y) => {
@@ -43,7 +43,7 @@ function gameboard() {
   }
 
   let allSunk = () => {
-    if (boats.every((boat) => boat.isSunk())) return true;
+    if (ships.every((ship) => ship.isSunk())) return true;
     return false;
   }
 
@@ -51,13 +51,13 @@ function gameboard() {
     return board;
   }
 
-  let getBoats = () => {
-    return boats;
+  let getShips = () => {
+    return ships;
   }
 
   return {
     getBoard,
-    getBoats,
+    getShips,
     placeShip,
     receiveAttack,
     allSunk

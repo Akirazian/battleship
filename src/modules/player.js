@@ -9,7 +9,6 @@ class Player {
   attack(player, x, y) {
     return player.board.receiveAttack(x, y);
   }
-
 }
 
 class ComputerPlayer extends Player {
