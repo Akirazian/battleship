@@ -18,6 +18,7 @@ const game = (playerOne, playerTwo = 'computer') => {
     one.board.placeShip(3, [7, 2], 'y');
     one.board.placeShip(3, [4, 7], 'x');
     one.board.placeShip(2, [8, 4], 'x');
+    two.attack(one, 4, 5);
     two.board.placeShip(5, [0, 0], 'y');
     two.board.placeShip(4, [5, 5], 'x');
     two.board.placeShip(3, [7, 2], 'y');

@@ -2,11 +2,11 @@
 const display = (() => {
   let container = document.getElementById('board-container');
   const createGrid = () => {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 9; i >= 0; i--) {
       for (let j = 0; j < 10; j++) {
         let box = document.createElement('div');
         box.classList.add('board-box');
-        box.id = `${i}, ${j}`;
+        box.id = `${j}, ${i}`;
         container.appendChild(box);
       }
     }
@@ -19,6 +19,9 @@ const display = (() => {
         if (board[x][y] != null) {
           const box = document.getElementById(`${x}, ${y}`);
           box.classList.add('ship');
+          if (board[x][y].hit == true) {
+            box.classList.add('hit');
+          }
         }
       }
     }
