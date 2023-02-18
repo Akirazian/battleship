@@ -1,7 +1,12 @@
+body {
+  display: flex;
+}
+
 .board-container {
   display: grid;
   grid-template-columns: repeat(10, 50px);
   grid-template-rows: repeat(10, 50px);
+  margin: 20px
 }
 
 .board-box {

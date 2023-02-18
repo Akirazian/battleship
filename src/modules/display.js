@@ -1,15 +1,17 @@
 
 const display = (() => {
-  let container = document.getElementById('board-container');
+  let containers = document.querySelectorAll('.board-container');
   const createGrid = () => {
-    for (let i = 9; i >= 0; i--) {
-      for (let j = 0; j < 10; j++) {
-        let box = document.createElement('div');
-        box.classList.add('board-box');
-        box.id = `${j}, ${i}`;
-        container.appendChild(box);
+    containers.forEach((node) => {
+      for (let i = 9; i >= 0; i--) {
+        for (let j = 0; j < 10; j++) {
+          let box = document.createElement('div');
+          box.classList.add('board-box');
+          box.id = `${j}, ${i}`;
+          node.appendChild(box);
+        }
       }
-    }
+    });   
   }
 
   const renderBoard = (player) => {

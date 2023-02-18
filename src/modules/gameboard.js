@@ -12,20 +12,26 @@ function gameboard() {
 
   let placeShip = (length, coord, axis) => {
     let newShip = shipFactory(length);
+    let x = coord[0];
+    let y = coord[1];
     //Prevents placing ship out of bounds
-    if (axis === 'x' && (length + coord[0] - 1) > 9) return;
-    if (axis === 'y' && (length + coord[1] - 1) > 9) return;
-    if (board[coord[0]][coord[1]] != null) return;
+    if (axis === 'x' && (length + x - 1) > 9) return;
+    if (axis === 'y' && (length + y - 1) > 9) return;
+    if (board[x][y] != null) return "occupied";
 
     if (axis === 'x') {
       for (let i = 0; i < length; i++) {
-        if (board[coord[0] + i][coord[1]] != null) return;
-        board[coord[0] + i][coord[1]] = { ship: newShip, hit: false };
+        if (board[x + i][y] != null) return "occupied";
+      }
+      for (let i = 0; i < length; i++) {
+        board[x + i][y] = { ship: newShip, hit: false };
       }
     } else {
       for (let i = 0; i < length; i++) {
-        if (board[coord[0]][coord[1] + i] != null) return;
-        board[coord[0]][coord[1] + i] = { ship: newShip, hit: false }
+        if (board[x][y + i] != null) return "occupied";
+      }
+      for (let i = 0; i < length; i++) {
+        board[x][y + i] = { ship: newShip, hit: false }
       }
     }
     ships.push(newShip);
