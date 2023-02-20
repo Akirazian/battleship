@@ -1,3 +1,4 @@
+import game from "./game";
 
 const display = (() => {
   let containers = document.querySelectorAll('.board-container');
@@ -23,6 +24,8 @@ const display = (() => {
           box.classList.add('ship');
           if (board[x][y].hit == true) {
             box.classList.add('hit');
+          } else if (board[x][y] == 'miss') {
+            box.classList.add('miss');
           }
         }
       }
@@ -37,16 +40,26 @@ const display = (() => {
           const box = document.querySelector(`#player-two-board [data-coord = "${x}, ${y}"`);
           if (board[x][y].hit == true) {
             box.classList.add('hit');
+          } else if (board[x][y] == 'miss') {
+            box.classList.add('miss');
           }
         }
       }
     }
   }
 
+  const activateBoard = () => {
+    let enemyBoard = containers[1];
+    for (const child of enemyBoard.children) {
+      child.addEventListener('click', game.attack);
+    }
+  }
+
   return {
     createGrid,
     renderPlayer,
-    renderEnemy
+    renderEnemy,
+    activateBoard
   }
 })();
 

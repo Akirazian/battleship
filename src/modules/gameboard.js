@@ -45,7 +45,7 @@ function gameboard() {
       position.ship.hit();
       return position.ship.getHits();
     }
-    return position = 'miss';
+    return board[x][y] = 'miss';
   }
 
   let allSunk = () => {
