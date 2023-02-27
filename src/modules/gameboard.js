@@ -40,7 +40,7 @@ function gameboard() {
   let receiveAttack = (x, y) => {
     let position = board[x][y];
     if(position) {
-      if (position.hit === true) return; //Prevents hitting same spot
+      if (position.hit === true) return;
       position.hit = true;
       position.ship.hit();
       return position.ship.getHits();

@@ -1,6 +1,7 @@
 webpack.config.js
 tests
 .babelrc
+todo.txt
 
 # Logs
 logs

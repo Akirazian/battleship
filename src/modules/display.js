@@ -51,15 +51,30 @@ const display = (() => {
   const activateBoard = () => {
     let enemyBoard = containers[1];
     for (const child of enemyBoard.children) {
+      if (child.classList.contains('hit') || child.classList.contains('miss')) continue;
       child.addEventListener('click', game.attack);
     }
+  }
+
+  const deactivateBoard = () => {
+    let enemyBoard = containers[1];
+    for (const child of enemyBoard.children) {
+      child.removeEventListener('click', game.attack);
+    }
+  }
+
+  const callWinner = (player) => {
+    const textbox = document.querySelector('.text-display');
+    textbox.textContent = `${player.name} wins!`
   }
 
   return {
     createGrid,
     renderPlayer,
     renderEnemy,
-    activateBoard
+    activateBoard,
+    deactivateBoard,
+    callWinner
   }
 })();
 

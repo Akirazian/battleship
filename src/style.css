@@ -25,3 +25,7 @@
 .miss {
   background-color: rgb(146, 245, 232);
 }
+
+.text-display {
+  text-align: center;
+}
