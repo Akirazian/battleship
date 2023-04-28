@@ -14,7 +14,7 @@ const display = (() => {
       }
     });   
   }
-
+  
   const renderPlayer = (player) => {
     const board = player.board.getBoard();
     for (let x = 0; x < 10; x++) {

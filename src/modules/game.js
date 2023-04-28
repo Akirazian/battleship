@@ -3,8 +3,7 @@ import display from "./display";
 
 const game = (() => {
   let computer = false;
-  let one, two, activePlayer;
-
+  let one, two, activePlayer, enemyPlayer;
 
   const newGame = (playerOne, playerTwo = 'computer') => {
     one = new Player(playerOne);
@@ -15,6 +14,7 @@ const game = (() => {
       two = new Player(playerTwo);
     }
     activePlayer = one;
+    enemyPlayer = two;
 
     //Predetermined test positions
     one.board.placeShip(5, [0, 0], 'y');
@@ -22,11 +22,10 @@ const game = (() => {
     one.board.placeShip(3, [7, 2], 'y');
     one.board.placeShip(3, [4, 7], 'x');
     one.board.placeShip(2, [2, 3], 'x');
-    two.board.placeShip(5, [0, 0], 'y');
-    two.board.placeShip(4, [2, 9], 'x');
-    two.board.placeShip(3, [7, 2], 'y');
-    two.board.placeShip(3, [4, 7], 'x');
-    two.board.placeShip(2, [2, 3], 'x');
+    
+    if (computer == true) {
+      two.randomPlaceShip();
+    }
 
     display.createGrid();
     display.renderPlayer(one);
@@ -35,8 +34,8 @@ const game = (() => {
   }
 
   const attack = (e) => {
-    activePlayer.attack(two, e.target.dataset.coord[0], e.target.dataset.coord.slice(-1));
-    display.renderEnemy(two);
+    activePlayer.attack(enemyPlayer, e.target.dataset.coord[0], e.target.dataset.coord.slice(-1));
+    display.renderEnemy(enemyPlayer);
     display.deactivateBoard();
     if (_checkWinner()) return;
     if (computer == true) {

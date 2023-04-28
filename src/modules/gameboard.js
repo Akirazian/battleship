@@ -35,6 +35,7 @@ function gameboard() {
       }
     }
     ships.push(newShip);
+    return 'success';
   }
 
   let receiveAttack = (x, y) => {
