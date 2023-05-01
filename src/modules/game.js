@@ -16,21 +16,24 @@ const game = (() => {
     activePlayer = one;
     enemyPlayer = two;
 
-    //Predetermined test positions
-    one.board.placeShip(5, [0, 0], 'y');
-    one.board.placeShip(4, [2, 9], 'x');
-    one.board.placeShip(3, [7, 2], 'y');
-    one.board.placeShip(3, [4, 7], 'x');
-    one.board.placeShip(2, [2, 3], 'x');
-    
+    display.activatePlacement();    
     if (computer == true) {
       two.randomPlaceShip();
     }
+  }
 
-    display.createGrid();
-    display.renderPlayer(one);
-    display.renderEnemy(two);
+  const startGame = () => {
+    display.renderPlayer(activePlayer);
+    display.renderEnemy(enemyPlayer);
     display.activateBoard();
+  }
+
+  const placeShip = (e, shipLength) => {
+    let x = Number(e.target.dataset.coord[0]);
+    let y = Number(e.target.dataset.coord.slice(-1));
+    if (activePlayer.board.placeShip(Number(shipLength), [x, y], 'x') != 'success') return;
+    display.renderPlayer(activePlayer);
+    return 'success';
   }
 
   const attack = (e) => {
@@ -43,7 +46,7 @@ const game = (() => {
         two.randomAttack(one);
         display.renderPlayer(one);
         display.activateBoard();
-      }, 1000)
+      }, 1000);
     }
   }
 
@@ -61,7 +64,9 @@ const game = (() => {
   
   return {
     newGame,
+    startGame,
     attack,
+    placeShip
   }
 })();
 

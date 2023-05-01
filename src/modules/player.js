@@ -29,7 +29,7 @@ class ComputerPlayer extends Player {
   }
 
   randomPlaceShip() {
-    let lengthArray = [2, 3, 3, 4, 5];
+    let lengthArray = [5, 4, 3, 3, 2];
     for (let i = 0; i < 5; i++) {
       let x, y, axis;
       do {
